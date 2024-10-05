@@ -11,38 +11,37 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 class Result {
-
-    /*
-     * Complete the 'plusMinus' function below.
-     *
-     * The function accepts INTEGER_ARRAY arr as parameter.
-     */
-
     public static void plusMinus(List<Integer> arr) {
-        int positiveNumbers = 0;
-        int negativeNumbers = 0;
-        int zeroNumbers = 0;
+        int positiveCount = 0;
+        int negativeCount = 0;
+        int zeroCount = 0;
+        int n = arr.size();
         
-        for (Integer x : arr) {
-            if (x < 0) {
-                negativeNumbers++;
-            } else if (x > 0) {
-                positiveNumbers++;
-            } else {
-                zeroNumbers++;
+        for (int i = 0; i < n; i++)
+        {
+            int num = arr.get(i);
+            if (num < 0)
+            {
+                negativeCount++;
+            }
+            else if (num == 0)
+            {
+                zeroCount++;
+            }
+            else
+            {
+                positiveCount++;
             }
         }
         
-        int numberOfElements = arr.size();
-        float positiveRatio = (float) positiveNumbers / numberOfElements;
-        float negativeRatio = (float) negativeNumbers / numberOfElements;
-        float zeroRatio = (float) zeroNumbers / numberOfElements;
+        float positiveRatio = positiveCount / (float) n;
+        float negativeRatio = negativeCount / (float) n;
+        float zeroRatio = zeroCount / (float) n;
         
-        System.out.println(String.format("%.6f", positiveRatio));
-        System.out.println(String.format("%.6f", negativeRatio));
-        System.out.println(String.format("%.6f", zeroRatio));
+        System.out.printf("%.6f%n", positiveRatio);
+        System.out.printf("%.6f%n", negativeRatio);
+        System.out.printf("%.6f%n", zeroRatio);
     }
-
 }
 
 public class Solution {
